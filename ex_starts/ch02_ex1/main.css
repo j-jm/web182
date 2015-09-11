@@ -5,7 +5,7 @@ main {
     width: 450px;
     margin: 0 auto;
     padding: 1em;
-    background: white;
+    background: #CCCCCC;
     border: 2px solid navy;
 }
 h1 {
