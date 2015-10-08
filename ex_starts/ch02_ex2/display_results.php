@@ -6,7 +6,9 @@
         FILTER_VALIDATE_FLOAT);
     $years = filter_input(INPUT_POST, 'years',
         FILTER_VALIDATE_INT);
+?>
 
+<?php
     // validate investment
     if ($investment === FALSE ) {
         $error_message = 'Investment must be a valid number.'; 
@@ -16,7 +18,9 @@
     } else if ( $interest_rate === FALSE )  {
         $error_message = 'Interest rate must be a valid number.'; 
     } else if ( $interest_rate <= 0 ) {
-        $error_message = 'Interest rate must be greater than zero.'; 
+        $error_message = 'Interest rate must be greater than zero.';
+    } else if ( $interest_rate > 15 ) {
+        $error_message = 'Interest rate must be less or equal to 15.';  
     // validate years
     } else if ( $years === FALSE ) {
         $error_message = 'Years must be a valid whole number.';
@@ -28,11 +32,17 @@
     } else {
         $error_message = ''; 
     }
+?>
 
+<?php
+/*
     // if an error message exists, go to the index page
     if ($error_message != '') {
         include('index.php');
-        exit(); }
+       exit();
+    }
+*/
+ #   include('index.php');
 
     // calculate the future value
     $future_value = $investment;
@@ -46,6 +56,8 @@
     $yearly_rate_f = $interest_rate.'%';
     $future_value_f = '$'.number_format($future_value, 2);
 ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,7 +66,7 @@
 </head>
 <body>
     <main>
-        <h1>Future Value Calculator</h1>
+        <h1>Calculation Summary</h1>
 
         <label>Investment Amount:</label>
         <span><?php echo $investment_f; ?></span><br>

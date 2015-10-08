@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +13,13 @@
 
             <div id="data">
                 <label>Product Description:</label>
-                <input type="text" name="product_description"><br>
+                <input type="text" name="product_description" value= <?php echo $_POST['product_description'] ?>><br>
 
                 <label>List Price:</label>
-                <input type="text" name="list_price"><br>
+                <input type="text" name="list_price" value= <?php echo $_POST['list_price'] ?>><br>
 
                 <label>Discount Percent:</label>
-                <input type="text" name="discount_percent"><span>%</span><br>
+                <input type="text" name="discount_percent" value= <?php echo $_POST['discount_percent'] ?>><span>%</span><br>
             </div>
 
             <div id="buttons">

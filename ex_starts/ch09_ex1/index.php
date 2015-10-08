@@ -18,13 +18,22 @@ switch ($action) {
          * validate and process the name
          ************************************************/
         // 1. make sure the user enters a name
-        // 2. display the name with only the first letter capitalized
+        // 2. display the name with only the first letter capitalized        
+        if ($name = '')
+        {          
+            $message = "Please, enter your name.\n";
+            break;       
+        }
+
+        $name = strtolower($name);
+        $name = ucfirst($name);
 
         /*************************************************
          * validate and process the email address
          ************************************************/
-        // 1. make sure the user enters an email
+        // 1. make sure the user enters an email or (strpos($email, '@') === false) or (strpos($email, '.') === false)
         // 2. make sure the email address has at least one @ sign and one dot character
+ 
 
         /*************************************************
          * validate and process the phone number
@@ -35,9 +44,7 @@ switch ($action) {
         /*************************************************
          * Display the validation message
          ************************************************/
-        $message = "This page is under construction.\n" .
-                   "Please write the code that process the data.";
-
+       $message = "Hello". $name. "\n";
         break;
 }
 include 'string_tester.php';

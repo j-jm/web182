@@ -42,13 +42,39 @@
 
         <label>Number to Roll:</label>
         <select name="number_to_roll">
-            <!-- TODO: Use a for loop to display these options ! -->
+
+<!--
+            <?php 
+         #   $i = 1;
+           # while ($i <= 6) {
+            #    print "<option value=\"$i\">$i</option>";
+            #    $i++;
+         # } ?>
+
+
+
+          #  <?php
+           # for ($i = 1; $i <= 8;$i++) {
+           #     print "<option value=\"$i\">$i</option>";              
+          #  } ?>
+-->
+
+            <?php
+            $i = 1;
+            do {
+                print "<option value=\"$i\">$i</option>";
+                i++;  
+            } while ($i <= 6);
+            ?>
+
+
+            <!-- TODO: Use a for loop to display these options ! 
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
+            <option value="6">6</option>-->
         </select><br>
 
         <label>&nbsp;</label>
