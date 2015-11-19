@@ -6,16 +6,16 @@
 
     if ($_SERVER['HTTP_HOST'] == 'localhost')
     {
-        $dsn= 'mysql:host=localhost; dbname=';
+        $dsn= 'mysql:host=localhost;dbname=my_guitar_shop1';
         $username= 'mgs_user';
-        password= 'pa55word';
+        $password= 'pa55word';
     }
 
     else
     {
         $dsn= 'mysql:host=web182jjm;dbname=my_guitar_shop1';
         $username= 'mgs_user';
-        password= 'pa55word';
+        $password= 'pa55word';
     }
     try {
         $db = new PDO($dsn, $username, $password);
