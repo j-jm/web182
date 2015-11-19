@@ -13,7 +13,7 @@
 
     else
     {
-        $dsn= 'mysql:host=web182jjm;dbname=my_guitar_shop1';
+        $dsn= 'mysql:host=web182jjm.db;dbname=my_guitar_shop1';
         $username= 'mgs_user';
         $password= 'pa55word';
     }
