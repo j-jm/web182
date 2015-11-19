@@ -21,29 +21,45 @@ $statement->closeCursor();
 <!-- the body section -->
 <body>
 <header><h1>Product Manager</h1></header>
+
 <main>
     <h1>Category List</h1>
     <table>
         <tr>
+            <th>Category ID</th>           
             <th>Name</th>
-            <th>&nbsp;</th>
+            <th>Remove category</th>   
         </tr>
-        
-        <!-- add code for the rest of the table here -->
     
+    <?php foreach ($categories as $category) : ?>       
+        <tr>
+            <td><?php echo $category['categoryID']; ?></td>
+            <td><?php echo $category['categoryName']; ?></td>
+
+            <!-- delete category -->
+            <td>
+            <form action="delete_category.php" method="post">
+                <input type="hidden" name="category_id" value="<?php echo $category['categoryID']; ?>">
+                <input type="submit" value="Delete">
+            </form>
+            </td> 
+        </tr>            
+    <?php endforeach; ?>
     </table>
 
     <h2>Add Category</h2>
-    
-    <!-- add code for the form here -->
-    
-    <br>
-    <p><a href="index.php">List Products</a></p>
+        <form action="add_category.php" method="post" id="add_category_form" autocomplete="on">
+            <label>Name</label>
+            <input type="text" name="newCategory" id="newCategory" autofocus>&nbsp;
+            <input type="submit" value="Add"><br>
+        </form>
 
-    </main>
+    <p><a href="index.php">List Products</a></p>
+</main>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> My Guitar Shop, Inc.</p>
+        <p>&copy; <?php echo date("Y"); ?>My Guitar Shop, Inc.</p>
     </footer>
+
 </body>
 </html>

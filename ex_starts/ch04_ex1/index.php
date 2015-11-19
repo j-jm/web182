@@ -19,14 +19,17 @@ $category = $statement1->fetch();
 $category_name = $category['categoryName'];
 $statement1->closeCursor();
 
+ // print_r($category);
 
 // Get all categories
 $query = 'SELECT * FROM categories
                        ORDER BY categoryID';
-$statement = $db->prepare($query);
-$statement->execute();
-$categories = $statement->fetchAll();
-$statement->closeCursor();
+$statement2 = $db->prepare($query);
+$statement2->execute();
+$categories = $statement2->fetchAll();
+$statement2->closeCursor();
+
+ // print_r($categories);
 
 // Get products for selected category
 $queryProducts = 'SELECT * FROM products
@@ -37,6 +40,9 @@ $statement3->bindValue(':category_id', $category_id);
 $statement3->execute();
 $products = $statement3->fetchAll();
 $statement3->closeCursor();
+
+ // print_r($products);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,6 +83,7 @@ $statement3->closeCursor();
                 <th>Name</th>
                 <th class="right">Price</th>
                 <th>&nbsp;</th>
+                <th>&nbsp;</th>
             </tr>
 
             <?php foreach ($products as $product) : ?>
@@ -84,13 +91,24 @@ $statement3->closeCursor();
                 <td><?php echo $product['productCode']; ?></td>
                 <td><?php echo $product['productName']; ?></td>
                 <td class="right"><?php echo $product['listPrice']; ?></td>
-                <td><form action="delete_product.php" method="post">
+
+            <!-- edit product -->
+                <td><form action="edit_product_form.php" method="post">
+                    <input type="hidden" name="product_id"
+                           value="<?php echo $product['productID']; ?>">
+                    <input type="hidden" name="category_id"
+                           value="<?php echo $product['categoryID']; ?>">
+                    <input type="submit" value="Edit">
+                    </form></td>
+
+            <!-- delete product -->
+                    <td><form action="delete_product.php" method="post">
                     <input type="hidden" name="product_id"
                            value="<?php echo $product['productID']; ?>">
                     <input type="hidden" name="category_id"
                            value="<?php echo $product['categoryID']; ?>">
                     <input type="submit" value="Delete">
-                </form></td>
+                    </form></td>
             </tr>
             <?php endforeach; ?>
         </table>

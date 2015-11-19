@@ -24,13 +24,13 @@ $statement->closeCursor();
     <main>
         <h1>Add Product</h1>
         <form action="add_product.php" method="post"
-              id="add_product_form">
+              id="product_form">
 
             <label>Category:</label>
             <select name="category_id">
             <?php foreach ($categories as $category) : ?>
                 <option value="<?php echo $category['categoryID']; ?>">
-                    <?php echo $category['categoryName']; ?>
+                <?php echo $category['categoryName']; ?>
                 </option>
             <?php endforeach; ?>
             </select><br>
